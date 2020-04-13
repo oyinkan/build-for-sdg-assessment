@@ -11,6 +11,12 @@ const covid19ImpactEstimator = (data) => {
       return this.currentlyInfected * 512;
     }
   };
+
+  return {
+    data,
+    impact,
+    severeImpact
+  };
 };
 
 export default covid19ImpactEstimator;
