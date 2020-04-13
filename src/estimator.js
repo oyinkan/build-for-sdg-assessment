@@ -8,7 +8,7 @@ const covid19ImpactEstimator = (data) => {
   const impact = {
     currentlyInfected: reportedCases * 10,
     get infectionsByRequestedTime() {
-      return this.currentlyInfected * 2 ** Math.trunc(timeToElapse / 3);
+      return this.currentlyInfected * 2 * 2 ** Math.trunc(timeToElapse / 3);
     }
   };
   const severeImpact = {
