@@ -3,7 +3,7 @@ const covid19ImpactEstimator = (data) => {
     let impact = {
         currentlyInfected: data.reportedCases * 10,
         get infectionsByRequestedTime() {
-            return this.currentlyInfected x 512;
+            return this.currentlyInfected * 512;
         }
     }
 
@@ -11,7 +11,7 @@ const covid19ImpactEstimator = (data) => {
         currentlyInfected: data.reportedCases * 50,
 
         get infectionsByRequestedTime() {
-            return this.currentlyInfected x 512;
+            return this.currentlyInfected * 512;
         }
     }
 };
