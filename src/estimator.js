@@ -2,7 +2,7 @@ const covid19ImpactEstimator = (data) => {
   if (data.periodType === 'weeks') {
     data.timeToElapse *= 7;
   } else if (data.periodType === 'months') {
-    data.timeToLapse *= 30;
+    data.timeToElapse *= 30;
   }
   const { reportedCases, timeToElapse } = data;
   const impact = {
