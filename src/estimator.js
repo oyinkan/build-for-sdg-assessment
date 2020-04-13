@@ -4,14 +4,15 @@ const covid19ImpactEstimator = (data) => {
   } else if (data.periodType === 'months') {
     data.timeToLapse *= 30;
   }
+  const { reportedCase, timeToLapse } = data;
   const impact = {
-    currentlyInfected: data.reportedCases * 10,
+    currentlyInfected: reportedCases * 10,
     get infectionsByRequestedTime() {
       return this.currentlyInfected * 2 ** Math.trunc(timeToLapse / 3);
     }
   };
   const severeImpact = {
-    currentlyInfected: data.reportedCases * 50,
+    currentlyInfected: reportedCases * 50,
     get infectionsByRequestedTime() {
       return this.currentlyInfected * 512;
     }
