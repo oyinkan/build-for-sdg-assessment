@@ -1,5 +1,5 @@
 const covid19ImpactEstimator = (data) => {
-  const hospitalBeds = data.totalHospitalBeds * 0.35;
+  const hospitalBeds = data.totalHospitalBeds * 0.35; 
   if (data.periodType === 'days') {
     data.timeToElapse *= 1;
   } else if (data.periodType === 'weeks') {
@@ -18,6 +18,16 @@ const covid19ImpactEstimator = (data) => {
     },
     get hospitalBedsByRequestedTime() {
       return Math.ceil(hospitalBeds - this.severeCasesByRequestedTime);
+    },
+    get casesForICUByRequestedTime() {
+      return this.infectionsByRequestedTime * 0.05;
+    },
+    get casesForVentilatorsByRequestedTime() {
+      return this.infectionsByRequestedTime * 0.02;
+    },
+    get dollarsInFlight() {
+      const dollarLost = this.infectionsByRequestedTime * data.population;
+      return (dollarLost * data.region.avgDailyIncomeInUSD) / timeToElapse;
     }
   };
   const severeImpact = {
@@ -30,6 +40,16 @@ const covid19ImpactEstimator = (data) => {
     },
     get hospitalBedsByRequestedTime() {
       return Math.ceil(hospitalBeds - this.severeCasesByRequestedTime);
+    },
+    get casesForICUByRequestedTime() {
+      return this.infectionsByRequestedTime * 0.05;
+    },
+    get casesForVentilatorsByRequestedTime() {
+      return this.infectionsByRequestedTime * 0.02;
+    },
+    get dollarsInFlight() {
+      const dollarLost = this.infectionsByRequestedTime * data.population;
+      return (dollarLost * data.region.avgDailyIncomeInUSD) / timeToElapse;
     }
   };
 
