@@ -20,10 +20,10 @@ const covid19ImpactEstimator = (data) => {
       return Math.ceil(hospitalBeds - this.severeCasesByRequestedTime);
     },
     get casesForICUByRequestedTime() {
-      return this.infectionsByRequestedTime * 0.05;
+      return Math.trunc(this.infectionsByRequestedTime * 0.05);
     },
     get casesForVentilatorsByRequestedTime() {
-      return this.infectionsByRequestedTime * 0.02;
+      return Math.trunc(this.infectionsByRequestedTime * 0.02);
     },
     get dollarsInFlight() {
       const dollarLost = this.infectionsByRequestedTime * data.region.avgDailyIncomePopulation;
@@ -42,10 +42,10 @@ const covid19ImpactEstimator = (data) => {
       return Math.ceil(hospitalBeds - this.severeCasesByRequestedTime);
     },
     get casesForICUByRequestedTime() {
-      return this.infectionsByRequestedTime * 0.05;
+      return Math.trunc(this.infectionsByRequestedTime * 0.05);
     },
     get casesForVentilatorsByRequestedTime() {
-      return this.infectionsByRequestedTime * 0.02;
+      return Math.trunc(this.infectionsByRequestedTime * 0.02);
     },
     get dollarsInFlight() {
       const dollarLost = this.infectionsByRequestedTime * data.region.avgDailyIncomePopulation;
