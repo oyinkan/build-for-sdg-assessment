@@ -27,7 +27,7 @@ const covid19ImpactEstimator = (data) => {
     },
     get dollarsInFlight() {
       const dollarLost = this.infectionsByRequestedTime * data.population;
-      return (dollarLost * data.region.avgDailyIncomeInUSD) / timeToElapse;
+      return Math.trunc((dollarLost * data.region.avgDailyIncomeInUSD) / timeToElapse);
     }
   };
   const severeImpact = {
@@ -49,7 +49,7 @@ const covid19ImpactEstimator = (data) => {
     },
     get dollarsInFlight() {
       const dollarLost = this.infectionsByRequestedTime * data.population;
-      return (dollarLost * data.region.avgDailyIncomeInUSD) / timeToElapse;
+      return Math.trunc((dollarLost * data.region.avgDailyIncomeInUSD) / timeToElapse);
     }
   };
 
