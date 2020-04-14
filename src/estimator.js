@@ -1,4 +1,5 @@
 const covid19ImpactEstimator = (data) => {
+  const hospitalBeds = data.totalHospitalBeds * 0.35;
   if (data.periodType === 'days') {
     data.timeToElapse *= 1;
   } else if (data.periodType === 'weeks') {
@@ -12,11 +13,23 @@ const covid19ImpactEstimator = (data) => {
     get infectionsByRequestedTime() {
       return this.currentlyInfected * 2 ** Math.trunc(timeToElapse / 3);
     }
+    get severeCasesByReuestedTime() {
+      return this.infectionsByRequestedTime * 0.15;
+    }
+    get hospitalBedsByRequestedTime() {
+      return Math.ceil(hospitalBeds - this.severeCasesByReuestedTime);
+    }
   };
   const severeImpact = {
     currentlyInfected: reportedCases * 50,
     get infectionsByRequestedTime() {
       return this.currentlyInfected * 2 ** Math.trunc(timeToElapse / 3);
+    }
+    get severeCasesByReuestedTime() {
+      return this.infectionsByRequestedTime * 0.15;
+    }
+    get hospitalBedsByRequestedTime() {
+      return Math.ceil(hospitalBeds - this.severeCasesByReuestedTime);
     }
   };
 
