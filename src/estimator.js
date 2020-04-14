@@ -26,7 +26,7 @@ const covid19ImpactEstimator = (data) => {
       return this.infectionsByRequestedTime * 0.02;
     },
     get dollarsInFlight() {
-      const dollarLost = this.infectionsByRequestedTime * data.population;
+      const dollarLost = this.infectionsByRequestedTime * data.region.avgDailyIncomePopulation;
       return Math.trunc((dollarLost * data.region.avgDailyIncomeInUSD) / timeToElapse);
     }
   };
@@ -48,7 +48,7 @@ const covid19ImpactEstimator = (data) => {
       return this.infectionsByRequestedTime * 0.02;
     },
     get dollarsInFlight() {
-      const dollarLost = this.infectionsByRequestedTime * data.population;
+      const dollarLost = this.infectionsByRequestedTime * data.region.avgDailyIncomePopulation;
       return Math.trunc((dollarLost * data.region.avgDailyIncomeInUSD) / timeToElapse);
     }
   };
